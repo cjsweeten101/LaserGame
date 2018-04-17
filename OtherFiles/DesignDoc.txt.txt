@@ -1,0 +1,9 @@
+Rapid Prototyping challenge, week 1:
+
+LASERS:
+
+1 v 1 arena (I'm so original)
+
+Basic Mechanic:
+Players have a laser and a mirror, can switch between to shoot/deflect shots trying to kill the other player.
+The environment has mirrors and pass through walls, creating unpredictable trick shots.
