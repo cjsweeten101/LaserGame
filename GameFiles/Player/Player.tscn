@@ -20,7 +20,8 @@ __meta__ = {
 }
 max_speed = 600
 accel = 200
-gravity = 10
+gravity = 25
+jump_height = -700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
