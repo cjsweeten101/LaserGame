@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_player_sprite.png-6a5e686510cf84fead3575ace7d57209.stex"
+path="res://.import/laser_sprite.png-48e6ba3ee22c6ca7f0081b3b66116650.stex"
 
 [deps]
 
-source_file="res://Player/test_player_sprite.png"
-source_md5="38566eb3c51cee65d317b0fefa2b31f6"
+source_file="res://Laser/laser_sprite.png"
+source_md5="e10e991ac3a14a86f18bbcf92e85fc5d"
 
-dest_files=[ "res://.import/test_player_sprite.png-6a5e686510cf84fead3575ace7d57209.stex" ]
-dest_md5="81737348c3ac75e733ede59c881a059b"
+dest_files=[ "res://.import/laser_sprite.png-48e6ba3ee22c6ca7f0081b3b66116650.stex" ]
+dest_md5="24e4cbab64877b868fddcb0bc47c1540"
 
 [params]
 

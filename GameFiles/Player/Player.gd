@@ -7,14 +7,19 @@ export var jump_height= -700
 var direction = Vector2()
 const UP = Vector2(0, -1)
 
+var can_shoot = true
+var laser = preload("res://Laser/Laser.tscn")
+
 func _physics_process(delta):
 	var friction = false
 	
 	direction.y += gravity
 	if Input.is_action_pressed("move_right"):
 		direction.x = min(direction.x + accel, max_speed)
+		$Sprite.flip_h = false
 	elif Input.is_action_pressed("move_left"):
 		direction.x = max(direction.x - accel, -max_speed)
+		$Sprite.flip_h = true
 	else:
 		friction = true
 	
@@ -26,4 +31,19 @@ func _physics_process(delta):
 	else:
 		if friction == true:
 			direction.x = lerp(direction.x, 0, .2)
+	
+	if Input.is_action_pressed("shoot") and can_shoot:
+		var main = get_parent()
+		var new_laser = laser.instance()
+		if $Sprite.flip_h:
+			new_laser.position = position + Vector2(-64,0)
+		#Facing Right
+		else:
+			new_laser.position = position + Vector2(64,0)
+		main.add_child(new_laser)
+		can_shoot = false
+		$reload.start()
 	direction = move_and_slide(direction, UP)
+
+func _on_reload_timeout():
+	can_shoot = true
