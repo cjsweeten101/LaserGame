@@ -10,6 +10,8 @@ const UP = Vector2(0, -1)
 var can_shoot = true
 var laser = preload("res://Laser/Laser.tscn")
 
+signal laser_direction
+
 func _physics_process(delta):
 	var friction = false
 	
@@ -35,11 +37,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot:
 		var main = get_parent()
 		var new_laser = laser.instance()
+		#Facing Left
 		if $Sprite.flip_h:
 			new_laser.position = position + Vector2(-64,0)
+			emit_signal("laser_direction", "left")
+			#print("emiititit")
 		#Facing Right
 		else:
 			new_laser.position = position + Vector2(64,0)
+			emit_signal("laser_direction", "right")
 		main.add_child(new_laser)
 		can_shoot = false
 		$reload.start()
