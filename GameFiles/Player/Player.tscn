@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+[node name="KinematicBody2D" type="KinematicBody2D" index="0" groups=[
 "players",
 ]]
 
@@ -36,7 +36,7 @@ texture = ExtResource( 2 )
 [node name="reload" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 autostart = false
 
