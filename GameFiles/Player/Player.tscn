@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" index="0" groups=[
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
 "players",
 ]]
 
@@ -24,6 +24,7 @@ max_speed = 600
 accel = 200
 gravity = 25
 jump_height = -700
+direction = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -42,6 +43,7 @@ autostart = false
 
 [node name="laser_cast" type="RayCast2D" parent="." index="3"]
 
+position = Vector2( 32, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 3000, 0 )
