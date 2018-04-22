@@ -9,8 +9,9 @@ const UP = Vector2(0, -1)
 
 var can_shoot = true
 var laser = preload("res://Laser/Laser.tscn")
+onready var raycast = get_node("laser_cast")
 
-signal direction
+signal hit
 
 func _physics_process(delta):
 	var friction = false
@@ -19,9 +20,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		direction.x = min(direction.x + accel, max_speed)
 		$Sprite.flip_h = false
+		raycast.rotation_degrees = 0
 	elif Input.is_action_pressed("move_left"):
 		direction.x = max(direction.x - accel, -max_speed)
 		$Sprite.flip_h = true
+		raycast.rotation_degrees = 180
 	else:
 		friction = true
 	
@@ -35,20 +38,14 @@ func _physics_process(delta):
 			direction.x = lerp(direction.x, 0, .2)
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
-		var main = get_parent()
-		var new_laser = laser.instance()
-		#Facing Left
-		if $Sprite.flip_h:
-			new_laser.position = position + Vector2(-32,0)
-			new_laser.assign_direction("left")
-		#Facing Right
-		else:
-			new_laser.position = position + Vector2(32,0)
-			new_laser.assign_direction("right")
-		main.add_child(new_laser)
+		shoot()
 		can_shoot = false
 		$reload.start()
 	direction = move_and_slide(direction, UP)
 
+func shoot():
+	if raycast.is_colliding():
+		emit_signal("hit", raycast.get_collision_point(), position)
+	
 func _on_reload_timeout():
 	can_shoot = true

@@ -36,9 +36,17 @@ texture = ExtResource( 2 )
 [node name="reload" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 autostart = false
+
+[node name="laser_cast" type="RayCast2D" parent="." index="3"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 3000, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
 
