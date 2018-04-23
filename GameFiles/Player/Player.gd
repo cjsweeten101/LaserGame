@@ -45,12 +45,13 @@ func _physics_process(delta):
 			current_speed.x = lerp(current_speed.x, 0, .2)
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
-		shoot()
 		can_shoot = false
 		$reload.start()
+		shoot()
 	current_speed = move_and_slide(current_speed, UP)
 
 func shoot():
+	pass
 	if raycast.is_colliding():
 		emit_signal("hit", raycast, position, direction)
 	
