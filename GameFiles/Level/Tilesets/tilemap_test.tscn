@@ -3,12 +3,13 @@
 [ext_resource path="res://Level/Tilesets/mirror.png" type="Texture" id=1]
 [ext_resource path="res://Level/Tilesets/mirrir_box.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.2253, 15.8101 )
+_sections_unfolded = [ "Resource" ]
 
-[node name="Node2D" type="Node2D" index="0" groups=[
+[node name="Node2D" type="Node2D" groups=[
 "mirrors",
 ]]
 
@@ -42,7 +43,7 @@ __meta__ = {
 
 visible = false
 build_mode = 0
-polygon = PoolVector2Array( -16.016, 15.9933, -16.015, -16.02, -15.0132, -16.02, 16.0181, 14.9775, 16.0181, 15.9767 )
+polygon = PoolVector2Array( -16.016, 15.9933, -16.015, -16.02, -15.0132, -16.02, 17.0952, 16.0377, 16.0181, 15.9767 )
 _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
@@ -72,6 +73,6 @@ bounce = 0.0
 "mirrors",
 ]]
 
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 

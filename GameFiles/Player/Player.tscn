@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" index="0" groups=[
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
 "players",
 ]]
 
@@ -47,7 +47,7 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 2500, 0 )
 collision_mask = 1
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Transform" ]
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
 
