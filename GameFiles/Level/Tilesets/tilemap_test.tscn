@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16.2253, 15.8101 )
+extents = Vector2( 16.0108, 16.002 )
 _sections_unfolded = [ "Resource" ]
 
 [node name="Node2D" type="Node2D" groups=[
@@ -43,11 +43,8 @@ __meta__ = {
 
 visible = false
 build_mode = 0
-polygon = PoolVector2Array( -16.016, 15.9933, -16.015, -16.02, -15.0132, -16.02, 17.0952, 16.0377, 16.0181, 15.9767 )
+polygon = PoolVector2Array( -16.016, 15.9933, -16.015, -16.02, -15.0132, -16.02, 17.0659, 15.9746, 16.0181, 15.9767 )
 _sections_unfolded = [ "Visibility" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="mirror_block" type="Sprite" parent="." index="1" groups=[
 "mirrors",

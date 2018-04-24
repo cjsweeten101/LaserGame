@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player_mirror.gd" type="Script" id=1]
+[ext_resource path="res://Player/player_mirror.png" type="Texture" id=2]
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"mirrors",
+]]
+
+position = Vector2( 64, 0 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0" groups=[
+"mirrors",
+]]
+
+build_mode = 0
+polygon = PoolVector2Array( -15.99, -33.181, 17.574, 32.0378, -15.9816, 32.0378 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+
