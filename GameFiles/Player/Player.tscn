@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/test_player_sprite.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+[node name="KinematicBody2D" type="KinematicBody2D" index="0" groups=[
 "players",
 ]]
 
@@ -25,6 +24,8 @@ accel = 200
 gravity = 25
 jump_height = -700
 direction = 1
+texture = null
+player_indx = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -32,12 +33,10 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
-texture = ExtResource( 2 )
-
 [node name="reload" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 autostart = false
 

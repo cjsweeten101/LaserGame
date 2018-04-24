@@ -2,20 +2,22 @@
 
 [resource]
 
-resource_name = "laser_anim"
+resource_name = "laser_animation"
 length = 0.5
-loop = false
+loop = true
 step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 1, 1, 10, 0 ) ]
+"values": [ {
+"args": [  ],
+"method": "_delete"
+} ]
 }
 

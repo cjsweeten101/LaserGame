@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Level/Tilesets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Level/Tilesets/mirror_tileset.tres" type="TileSet" id=2]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0" groups=[
 "walls",
@@ -30,5 +31,29 @@ _sections_unfolded = [ "Cell", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Mirrors" type="TileMap" parent="." index="1" groups=[
+"mirrors",
+]]
+
+position = Vector2( 16, 16 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 1900565, 536870912, 0, 1966100, 536870912, 0, 1966101, 536870913, 0, 2031635, 536870912, 0, 2031636, 536870913, 0, 2031637, 536870913, 0, 2097170, 536870912, 0, 2097171, 536870913, 0, 2097172, 536870913, 0, 2097173, 536870913, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
 
 
