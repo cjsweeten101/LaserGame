@@ -11,6 +11,7 @@ var laser_trail = preload("res://Laser/Laser_anim.tscn")
 var raycast = preload("res://RayCast2D.tscn")
 var game_over = false
 var reflecting_rays = []
+var new_ray
 
 func _ready():
 	connect('reflect', self, 'reflection')
@@ -50,25 +51,31 @@ func hit_detection(raycast, player_loc, direction):
 	add_child(t)
 
 func reflection(starting_point, cast_to_vector):
-	var new_ray = raycast.instance()
-	new_ray.position = starting_point
+	new_ray = raycast.instance()
+	if cast_to_vector.y < 0:
+		new_ray.position = starting_point + Vector2(0,-1)
+	elif cast_to_vector.y > 0:
+		new_ray.position = starting_point + Vector2(0,1)
+	if cast_to_vector.x < 0 and cast_to_vector.y == 0:
+		new_ray.position = starting_point + Vector2(-1,0)
+	elif cast_to_vector.x > 0 and cast_to_vector.y == 0:
+		new_ray.position = starting_point + Vector2(1,0)
 	new_ray.cast_to = cast_to_vector
 	add_child(new_ray)
 	reflecting_rays.append(new_ray)
-
+	
 func _physics_process(delta):
-	for ray in reflecting_rays:
-		if weakref(ray).get_ref() != null:
-			draw_trail(ray)
-			check_collision(ray)
+	if new_ray != null and weakref(new_ray).get_ref() != null:
+		draw_trail(new_ray)
+		check_collision(new_ray)
 
 func check_collision(r):
 	if r.is_colliding():
 		if r.get_collider() == null:
 			return
 		#if r.get_collider().is_in_group("mirrors"):
-		#	var destination = r.cast_to.bounce(r.get_collision_normal())
-		#	emit_signal("reflect", r.get_collision_point(), destination)
+			var destination = r.cast_to.bounce(r.get_collision_normal())
+			emit_signal("reflect", r.get_collision_point(), destination)
 		if r.get_collider().is_in_group("players"):
 			r.get_collider().queue_free()
 			$retry.show()

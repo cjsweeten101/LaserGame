@@ -6,11 +6,16 @@
 [ext_resource path="res://Player/test_player_sprite.png" type="Texture" id=4]
 [ext_resource path="res://Player/test_player2_sprite.png" type="Texture" id=5]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Level" parent="." index="0" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Transform" ]
 
 [node name="Player1" parent="." index="1" instance=ExtResource( 3 )]
 
