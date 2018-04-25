@@ -14,7 +14,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="Timer" type="Timer" parent="." index="0"]
 
 process_mode = 1
-wait_time = 0.05
+wait_time = 0.04
 one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]

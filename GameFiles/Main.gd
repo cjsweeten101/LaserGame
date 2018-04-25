@@ -54,8 +54,16 @@ func reflection(starting_point, cast_to_vector):
 	new_ray = raycast.instance()
 	if cast_to_vector.y < 0:
 		new_ray.position = starting_point + Vector2(0,-1)
+		if cast_to_vector.x < 0:
+			new_ray.position = new_ray.position + Vector2(-1,0)
+		elif cast_to_vector.x > 0:
+			new_ray.position = new_ray.position + Vector2(1,0)
 	elif cast_to_vector.y > 0:
 		new_ray.position = starting_point + Vector2(0,1)
+		if cast_to_vector.x < 0:
+			new_ray.position = new_ray.position + Vector2(-1,0)
+		elif cast_to_vector.x > 0:
+			new_ray.position = new_ray.position + Vector2(1,0)
 	if cast_to_vector.x < 0 and cast_to_vector.y == 0:
 		new_ray.position = starting_point + Vector2(-1,0)
 	elif cast_to_vector.x > 0 and cast_to_vector.y == 0:
@@ -65,15 +73,18 @@ func reflection(starting_point, cast_to_vector):
 	reflecting_rays.append(new_ray)
 	
 func _physics_process(delta):
-	if new_ray != null and weakref(new_ray).get_ref() != null:
-		draw_trail(new_ray)
-		check_collision(new_ray)
+	for ray in reflecting_rays:
+		if weakref(ray).get_ref() != null:
+			draw_trail(ray)
+			check_collision(ray)
+		else:
+			reflecting_rays.erase(ray)
 
 func check_collision(r):
 	if r.is_colliding():
 		if r.get_collider() == null:
 			return
-		#if r.get_collider().is_in_group("mirrors"):
+		if r.get_collider().is_in_group("mirrors"):
 			var destination = r.cast_to.bounce(r.get_collision_normal())
 			emit_signal("reflect", r.get_collision_point(), destination)
 		if r.get_collider().is_in_group("players"):
